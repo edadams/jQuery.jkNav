@@ -1,52 +1,110 @@
-<html>
-<head>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="jquery.jknav.min.js"></script>
-<style type="text/css">
- #ferris {
-  margin-bottom:500px;
- }
- #ferris li {
-  height:100px;
- }
- #bueller li {
-  height:100px;
- }
- li.o {
-  background-color:#f07;
-  color:#70f;
- }
- li.x {
-  color:#f07;
-  background-color:#70f;
- }
- #bueller {
-  margin-bottom:1200px;
- }
-</style>
-<script type="text/javascript">
- $(document).ready(function() {
-  $.jkNav('html, #dayoff div, #ferris li, #bueller .x, #faraway');
- });
-</script>
-</head>
-<body>
-<div id="dayoff"><p>WHOA</p> <div>WHAT</div> <p>WHOA</p></div>
-<div id="ferris">
-<ul>
- <li class="o">Gosh</li>
- <li class="x">Darn</li>
- <li class="o">It</li>
-</ul>
-</div>
-<div id="bueller">This list:
-<ol>
- <li class="o">Uno</li>
- <li class="x">Dos</li>
- <li class="o">Tres</li>
- <li class="x">Cuatro</li>
-</ol>
-</div>
-<div id="faraway">This is the last element!</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!-- I'm gonna use the latest jQuery so we can say it supports it. -->
+		<script type="text/javascript" src="jquery.jknav.js"></script>
+		<style>
+			body {
+				font: normal 17px/1.3 sans-serif;
+				margin: 24px;
+			}
+
+			.container {
+				margin: 0 auto;
+				width: 600px;
+			}
+
+			article {
+				border: 1px solid #ededed;
+				padding: 20px;
+				margin-bottom: 20px;
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				$.jkNav({
+					selector: 'article',
+					padding: 10,
+					debug: true
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<article>
+				<h1>Article heading</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.</p><p>Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<h1>'nother article title</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.</p><p>Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<h1>Neon Genesis Evangelion</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.</p><p>Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<h1>Pacific Rim</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.</p><p>Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<h1>Pacific Rim vs. Evangelion</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.</p><p>Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<h1>Why Penpen is the best Evangelion character</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.</p><p>Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<h1>How cute was Mako in Pacific Rim, though?</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.</p><p>Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+			<article>
+				<h1>Coming up with these headings is quite difficult, actually...</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.</p><p>Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+		</div>
+	</body>
 </html>

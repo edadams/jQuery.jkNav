@@ -1,33 +1,58 @@
-jQuery.jkNav=function(options) {
- if($.isPlainObject(options)) {
-  if(!options['up']) {
-   options.up=75;
+jQuery.jkNav = function(options) {
+
+  if($.isPlainObject(options)) {
+
+    if(!options['up']) {
+      options.up = 75;
+    }
+
+    if(!options['down']) {
+      options.down = 74;
+    }
+
+    if(!options['padding']) {
+      options.padding = 0;
+    }
+
+    if(!options['duration']) {
+      options.duration = 100;
+    }
+
+    if(!options['complete']) {
+      options.complete = function(){
+        return;
+      }
+    }
+
+    if(!options['debug']) {
+      options.debug = false;
+    }
+
+    function print_log(message) {
+      if(console.log && options.debug) {
+        console.log("[jkNav] " + message);
+      }
+    }
+
+    print_log("Debug enabled. Don't leave this on in production!");
+
+    options.down = parseFloat(options.down);
+    options.up = parseFloat(options.up); // @todo: Not sure you need to do this, they're not really integers. Will test.
+
+    jQuery('body').data('jkNav', options);
+  } else {
+    jQuery('body').data('jkNav', { // Defaults.
+      selector: options,
+      down: 74,
+      up: 75,
+      padding: 0,
+      duration: 100,
+      complete: function(){
+        return;
+      }
+    });
   }
-  if(!options['down']) {
-   options.down=74;
-  }
-  if(!options['padding']) {
-   options.padding=0;
-  }
-  if(!options['duration']) {
-   options.duration=100;
-  }
-  if(!options['complete']) {
-   options.complete=function(){return null;};
-  }
-  options.down=parseFloat(options.down);
-  options.up=parseFloat(options.up);
-  jQuery('body').data('jkNav', options);
- } else {
-  jQuery('body').data('jkNav', {selector:options, down:74, up:75, padding:0, duration:100, complete:function(){return null;}});
- }
- /* options={
-             selector: '#blogdesc, #blogtitle, .post.text',
-  		 up: 75,
-			 down: 74,
-			 padding: 0,
-			}
- */
+
  jQuery(document).keydown(function(e) {
   if(jQuery(document.activeElement).not('body').length==0 && jQuery('body').data('jkNavtf')==true) {
    jQuery('body').data('jkNavtf', true);
@@ -53,21 +78,38 @@ jQuery.jkNav=function(options) {
 	 }
     });
     switch(e.which) {
-     case jQuery('body').data('jkNav').up:
-	  if(jQuery('body').data('inPort').index!=0) {
-	   jQuery('body').data('jkNavtf', false);
-	   jQuery('body, html').animate({scrollTop:(Math.round(jQuery(jQuery('body').data('jkNav').selector).eq(jQuery('body').data('inPort').index-1).offset().top)-jQuery('body').data('jkNav').padding)}, {'duration': jQuery('body').data('jkNav').duration, 'easing':'swing', 'complete':function(){jQuery('body').data('jkNavtf', true); jQuery('body').data('jkNav').complete();}});
-	  }
-	 break;
-	 case jQuery('body').data('jkNav').down:
-	  if((jQuery('body').data('inPort').aLength-1)!=jQuery('body').data('inPort').index && jQuery('body').data('inPort').exact==true) {
-	   jQuery('body').data('jkNavtf', false);
-	   jQuery('body, html').animate({scrollTop:(Math.round(jQuery(jQuery('body').data('jkNav').selector).eq(jQuery('body').data('inPort').index+1).offset().top)-jQuery('body').data('jkNav').padding)}, {'duration': jQuery('body').data('jkNav').duration, 'easing':'swing', 'complete':function(){jQuery('body').data('jkNavtf', true); jQuery('body').data('jkNav').complete();}});
-	  } else if((jQuery('body').data('inPort').aLength-1)!=jQuery('body').data('inPort').index && jQuery('body').data('inPort').exact==false) {
-	   jQuery('body').data('jkNavtf', false);
-	   jQuery('body, html').animate({scrollTop:(Math.round(jQuery(jQuery('body').data('jkNav').selector).eq(jQuery('body').data('inPort').index).offset().top)-jQuery('body').data('jkNav').padding)}, {'duration':  jQuery('body').data('jkNav').duration, 'easing':'swing', 'complete':function(){jQuery('body').data('jkNavtf', true); jQuery('body').data('jkNav').complete();}});
-	  }
-	 break;
+
+      case jQuery('body').data('jkNav').up:
+
+        print_log("Up event");
+
+        if(jQuery('body').data('inPort').index!=0) {
+          jQuery('body').data('jkNavtf', false);
+          jQuery('body, html').animate({
+            scrollTop: (Math.round(jQuery(jQuery('body').data('jkNav').selector).eq(jQuery('body').data('inPort').index-1).offset().top)-jQuery('body').data('jkNav').padding)
+          }, {
+            'duration': jQuery('body').data('jkNav').duration,
+            'easing':'swing',
+            'complete': function(){
+              jQuery('body').data('jkNavtf', true);
+              jQuery('body').data('jkNav').complete();
+            }
+          });
+        }
+	      break;
+
+	     case jQuery('body').data('jkNav').down:
+
+        print_log("Down event");
+
+        if((jQuery('body').data('inPort').aLength-1)!=jQuery('body').data('inPort').index && jQuery('body').data('inPort').exact==true) {
+          jQuery('body').data('jkNavtf', false);
+          jQuery('body, html').animate({scrollTop:(Math.round(jQuery(jQuery('body').data('jkNav').selector).eq(jQuery('body').data('inPort').index+1).offset().top)-jQuery('body').data('jkNav').padding)}, {'duration': jQuery('body').data('jkNav').duration, 'easing':'swing', 'complete':function(){jQuery('body').data('jkNavtf', true); jQuery('body').data('jkNav').complete();}});
+        } else if((jQuery('body').data('inPort').aLength-1)!=jQuery('body').data('inPort').index && jQuery('body').data('inPort').exact==false) {
+          jQuery('body').data('jkNavtf', false);
+          jQuery('body, html').animate({scrollTop:(Math.round(jQuery(jQuery('body').data('jkNav').selector).eq(jQuery('body').data('inPort').index).offset().top)-jQuery('body').data('jkNav').padding)}, {'duration':  jQuery('body').data('jkNav').duration, 'easing':'swing', 'complete':function(){jQuery('body').data('jkNavtf', true); jQuery('body').data('jkNav').complete();}});
+        }
+        break;
     }
    }
   }
